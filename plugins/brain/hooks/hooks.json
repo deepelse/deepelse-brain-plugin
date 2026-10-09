@@ -1,0 +1,12 @@
+{
+  "description": "Cattura delle sessioni nel brain aziendale (D83)",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "sh", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/cattura.sh"], "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

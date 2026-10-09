@@ -1,0 +1,12 @@
+{
+  "name": "deepelse",
+  "owner": { "name": "DeepElse", "url": "https://github.com/Thomas-Piva" },
+  "description": "Plugin Claude Code di DeepElse",
+  "plugins": [
+    {
+      "name": "brain",
+      "source": "./plugins/brain",
+      "description": "Brain aziendale DeepElse: server MCP e cattura delle sessioni"
+    }
+  ]
+}

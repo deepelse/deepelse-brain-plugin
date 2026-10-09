@@ -1,0 +1,17 @@
+{
+  "name": "brain",
+  "description": "Brain aziendale DeepElse in Claude Code: server MCP (login Google @deepelse.com) e cattura delle sessioni come fatti di una riga",
+  "author": { "name": "DeepElse", "url": "https://github.com/Thomas-Piva" },
+  "homepage": "https://github.com/Thomas-Piva/deepelse-brain-plugin",
+  "repository": "https://github.com/Thomas-Piva/deepelse-brain-plugin",
+  "keywords": ["deepelse", "brain", "mcp"],
+  "userConfig": {
+    "token": {
+      "type": "string",
+      "title": "Token personale del brain",
+      "description": "Serve solo alla cattura delle sessioni. Crealo su https://16-22-161-210.sslip.io/io, «Agenti collegati» (nome: cattura). Vuoto = cattura spenta.",
+      "sensitive": true,
+      "required": false
+    }
+  }
+}
