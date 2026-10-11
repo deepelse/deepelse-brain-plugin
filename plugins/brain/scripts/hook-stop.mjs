@@ -37,6 +37,7 @@ const SEGRETI = [
   [/-----BEGIN [A-Z0-9 ]*PRIVATE KEY-----[\s\S]*?(?:-----END [A-Z0-9 ]*PRIVATE KEY-----|$)/g, "[chiave privata oscurata]"],
   [/\b(?:sk|rk|pk)-(?:[A-Za-z0-9]+-)*[A-Za-z0-9_]{16,}(?:-[A-Za-z0-9_]+)*/g, O], // sk-..., sk-ant-api03-..., sk-or-v1-..., sk-proj-..., coda compresa
   [/\bABSK[A-Za-z0-9+/=]{20,}/g, O],                                     // chiave API di Amazon Bedrock
+  [/\b(?:gsk|xai|pplx|tvly|nvapi|r8|fw|csk|jina)[_-][A-Za-z0-9]{20,}/g, O],  // chiavi con prefisso del fornitore (Groq, xAI, Perplexity, Tavily, NVIDIA, Replicate, Fireworks, Cerebras, Jina) anche senza «key:» davanti
   [/\bgh[pousr]_[A-Za-z0-9]{20,}/g, O],
   [/\bgithub_pat_[A-Za-z0-9_]{20,}/g, O],
   [/\b(?:AKIA|ASIA)[0-9A-Z]{16}\b/g, O],
