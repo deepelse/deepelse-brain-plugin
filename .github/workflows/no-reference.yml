@@ -1,0 +1,10 @@
+name: no-reference
+on:
+  push:
+  pull_request:
+jobs:
+  controllo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sh scripts/no-reference.sh
