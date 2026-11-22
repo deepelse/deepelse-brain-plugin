@@ -1,10 +1,31 @@
 {
-  "description": "Cattura delle sessioni nel brain aziendale (D83)",
+  "description": "Cattura delle sessioni nel brain aziendale (D83) e avvisi non letti all'apertura (#378)",
   "hooks": {
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "sh", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/cattura.sh"], "timeout": 10 }
+          {
+            "type": "command",
+            "command": "sh",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/cattura.sh"
+            ],
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/avvisi.sh"
+            ],
+            "timeout": 5
+          }
         ]
       }
     ]
