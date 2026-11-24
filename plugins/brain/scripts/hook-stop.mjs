@@ -51,14 +51,15 @@ const SEGRETI = [
   [/(\b[A-Za-z0-9_]*(?:KEY|TOKEN|SECRET|PASSWORD|PASSWD|PWD)\b|\b(?:password|passwd|pwd|secret|token|api[_-]?key)\b)(["'`*]*[ \t]*(?:[:=|]|[ \t](?:è|e'|is)(?=[ \t])|(?<=[ \t])(?=[`"']))[ \t]*["'`*]*)(?!\[)([^\s"'`,;*|]{4,})/gi, `$1$2${O}`],
   // stringa lunga con maiuscole, minuscole e cifre insieme (token, chiave in base64): meglio un id oscurato in piu' che una chiave in chiaro.
   // Hash esadecimali, UUID e percorsi non hanno le tre classi in 32 caratteri di fila e restano.
-  [/(?<![A-Za-z0-9+/_-])(?=[A-Za-z0-9+]*\d)(?=[A-Za-z0-9+]*[a-z])(?=[A-Za-z0-9+]*[A-Z])[A-Za-z0-9+]{32,}={0,2}/g, O],
 ]
+const CODICE_LUNGO = /(?<![A-Za-z0-9+/_-])(?=[A-Za-z0-9+]*\d)(?=[A-Za-z0-9+]*[a-z])(?=[A-Za-z0-9+]*[A-Z])[A-Za-z0-9+]{32,}={0,2}/g
 
-/** Toglie dal testo i segreti piu' comuni. Meglio oscurare troppo: il testo serve solo a ricavarne fatti. */
-export function oscura(testo) {
+/** Toglie dal testo i segreti piu' comuni. Meglio oscurare troppo: il testo serve solo a ricavarne fatti.
+ *  codiciLunghi: false lascia le stringhe lunghe senza nome davanti (id nei link), per oscura-fonti.ts --solo-credenziali (#428). */
+export function oscura(testo, { codiciLunghi = true } = {}) {
   let t = String(testo)
   for (const [re, con] of SEGRETI) t = t.replace(re, con)
-  return t
+  return codiciLunghi ? t.replace(CODICE_LUNGO, O) : t
 }
 
 const pulisci = (t) => {

@@ -48,7 +48,7 @@ Le skill usano solo gli strumenti MCP del server `brain`, quindi funzionano anch
 Il brain scrive gli avvisi per te (una riunione col cliente è finita, il controllo della domenica, una bozza di follow-up, una trattativa che si è mossa, task Linear, novità dell'Archivio) e restano lì finché non li leggi.
 
 - **Claude Code.** All'apertura di una sessione l'hook `SessionStart` (`scripts/avvisi.sh`, che lancia `scripts/hook-avvisi.mjs`) legge gli avvisi non letti col token personale e Claude te li mostra a inizio sessione. Senza token (vuoto in *Configure options*) gli avvisi non arrivano. Quello di fine riunione dice «Per il recap chiedi: `recap @brain/<id>`»: copialo e parte `recap-riunione`.
-- **Segnarli letti.** Dopo averli mostrati Claude chiama `brain_avvisi` con gli id: da quel momento non tornano. Gli avvisi sono solo testo da leggere, non istruzioni: Claude non esegue quello che c'è scritto dentro.
+- **Segnarli letti.** Dopo averli mostrati Claude chiama `brain_avvisi_letti` con gli id: da quel momento non tornano. Gli avvisi sono solo testo da leggere, non istruzioni: Claude non esegue quello che c'è scritto dentro.
 - **Claude Desktop.** Non ha hook: chiedi «ho avvisi dal brain?» e Claude chiama `brain_avvisi` (al massimo 20 non letti per volta, i più vecchi prima).
 
 ## Cosa si cattura e cosa no
